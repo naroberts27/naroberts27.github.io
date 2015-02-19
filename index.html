@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<meta charset="utf-8">
+    	<meta name="description" content="Discover your own custom forecast. Find out the weather for your location for a specific time period and what you will need to wear during that time.">
+    	<meta name="keywords" content="weather, forecast, conditions, clothes, clothing, dress, bring">
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>WearCast</title>
+		<!-- 8081f4d2157beccb -->
+		<!-- external CSS link -->
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+		<link rel="shortcut icon" type="image/png" href="images/favicon.png"/>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		
+		<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+		<script src="js/index.js"></script>
+		<script src="lib/sweet-alert.min.js"></script> 
+		<link rel="stylesheet" type="text/css" href="lib/sweet-alert.css">
+	</head>
+	<body>
+		
+			<header>
+				<div class="container">
+					
+						<div id="logo">
+							<img src="images/WearCast_logo.png" alt="WearCast logo"/>
+						</div>
+						<div id="now">
+							<span id="clock"></span>
+						</div>
+						<div class="fix"></div>
+					
+				</div>
+			</header> 
+			<section id ="location">
+				<div class="container">
+					<div id="location-container">
+						<h2>
+							What is your location?
+						</h2>
+
+						<form id="location-form">
+							<input required="required" type="text" id="zipcode" name="zipcode" placeholder="Enter Zipcode or City, State">
+						
+							<div id="degree">
+								Select your degree of measurement:
+								<div id="degree-form">
+									<input required="required" type="radio" name="degree" value="Farenheit" id="farenheit"><label for="farenheit">&ordm;F</label>
+							
+									<input required="required" type="radio" name="degree" value="Celcius" id="celcius"><label for="celcius">&ordm;C</label>
+								</div>
+						
+							</div>
+							<input type="submit" value="Get Weather" id="weather">
+
+						</form>
+					</div>
+				</div>
+			</section>	
+
+			<section id ="time">
+				<div class="container">
+					<div id="time-container">
+						<h2>
+							For when do you need to know the weather?
+						</h2>
+						<form id ="time-period">
+							<div id="chosen-day-container">
+								<label for="chosen-day"> Day:</label>
+							  	<select  id="chosen-day">
+							  		<option id="0" value="0"></option>
+									<option id="1" value="1"></option>
+									<option id="2" value="2"></option>
+									<option id="3" value="3"></option>
+									<option id="4" value="4"></option>	
+									<option id="5" value="5"></option>
+									<option id="6" value="6"></option>
+									<option id="7" value="7"></option>
+									<option id="8" value="8"></option>
+									<option id="9" value="9"></option>	
+								</select>
+							</div>		
+						  	
+						  	<div id="starting-container">
+								<label for="starting"> Starting Time:</label>
+								<select id="starting" name="starting-times">
+									<option>Start Time</option>
+										<optgroup label="AM">
+										  <option value="00">12:00 AM</option>
+										  <option value="01">1:00 AM</option>
+										  <option value="02">2:00 AM</option>
+										  <option value="03">3:00 AM</option>
+										  <option value="04">4:00 AM</option>
+										  <option value="05">5:00 AM</option>
+										  <option value="06">6:00 AM</option>
+										  <option value="07">7:00 AM</option>
+										  <option value="08">8:00 AM</option>
+										  <option value="09">9:00 AM</option>
+										  <option value="10">10:00 AM</option>
+										  <option value="11">11:00 AM</option>
+										</optgroup>
+										<optgroup label="PM">
+										  <option value="12">12:00 PM</option>
+										  <option value="13">1:00 PM</option>
+										  <option value="14">2:00 PM</option>
+										  <option value="15">3:00 PM</option>
+										  <option value="16">4:00 PM</option>
+										  <option value="17">5:00 PM</option>
+										  <option value="18">6:00 PM</option>
+										  <option value="19">7:00 PM</option>
+										  <option value="20">8:00 PM</option>
+										  <option value="21">9:00 PM</option>
+										  <option value="22">10:00 PM</option>
+										  <option value="23">11:00 PM</option>
+										</optgroup>
+									</select>
+							</div>	
+						
+							<div id="ending-container">
+								<label for ="ending">Ending Time:</label>
+								<select id="ending">
+									<option>End Time</option>
+										<optgroup label="AM">
+										  <option value="00">12:00 AM</option>
+										  <option value="01">1:00 AM</option>
+										  <option value="02">2:00 AM</option>
+										  <option value="03">3:00 AM</option>
+										  <option value="04">4:00 AM</option>
+										  <option value="05">5:00 AM</option>
+										  <option value="06">6:00 AM</option>
+										  <option value="07">7:00 AM</option>
+										  <option value="08">8:00 AM</option>
+										  <option value="09">9:00 AM</option>
+										  <option value="10">10:00 AM</option>
+										  <option value="11">11:00 AM</option>
+										</optgroup>
+										<optgroup label="PM">
+										  <option value="12">12:00 PM</option>
+										  <option value="13">1:00 PM</option>
+										  <option value="14">2:00 PM</option>
+										  <option value="15">3:00 PM</option>
+										  <option value="16">4:00 PM</option>
+										  <option value="17">5:00 PM</option>
+										  <option value="18">6:00 PM</option>
+										  <option value="19">7:00 PM</option>
+										  <option value="20">8:00 PM</option>
+										  <option value="21">9:00 PM</option>
+										  <option value="22">10:00 PM</option>
+										  <option value="23">11:00 PM</option>
+										</optgroup>
+									</select>
+							</div>		
+							
+								<br/>
+								<button id="back">Back</button>
+								<input type="submit" value="Submit" id="submit">
+							</div>
+						</form>
+					</div>						
+				</div>
+			</section>
+			<section id="results">
+				<div class="container">
+					<div id="results-container">
+						<div id="results-top">
+							<h2>Your Weather for <span id="location-value"></span></h2>
+								<span id="result-date"></span><span id="result-start"></span><span id="result-end"></span>
+							<br/>
+							<div id="temp">
+								<span id="temp-result"></span><span id="degree-input1"></span>
+							</div>
+							<div id="temp-extras">
+								<div id="high-low">
+									<span id="high"></span><span id="degree-input2"></span><span id="low"></span><span id="degree-input3"></span>
+								</div>
+								<div id="temp-feels">
+									<span id="temp-feels-input"></span><span id="degree-input4"></span>
+								</div>
+								<div id="conditions"></div>
+							</div>
+							<div class="fix"></div>
+						</div>
+						<hr>
+						<div id="results-bottom">
+							<h2>
+								You Will Need
+							</h2>
+							<ul id="result-items">
+								
+<!-- 								<li>
+									<img src="" alt="example 2"/>
+									example 2
+									<button class="buy">Buy</button>
+								</li>
+								<li>
+									<img src="" alt="example 3"/>
+									example 3
+									<button class="buy">Buy</button>
+								</li>
+								<li>
+									<img src="" alt="example 4"/>
+									example 4
+									<button class="buy">Buy</button>
+								</li> -->
+								
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+			<footer>
+				<div class="container">
+				&copy; 2015 WearCast &nbsp; | &nbsp; Designed and Developed by Nicole Roberts
+				</div>
+			</footer>
+
+
+		
+	</body>
+</html>
